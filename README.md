@@ -10,3 +10,16 @@ To run the example simply type:
 ```
 > docker-compose up -d && docker-compose logs -f
 ```
+
+## Adding it to your docker-compose file
+To include the flowofcontrol/docker-kafka and flowofcontrol/docker-zookeeper in their standard setups to your docker-compose.yml file you can simply add:
+```
+  zookeeper:
+    image: flowofcontrol/docker-zookeeper
+  kafka:
+    image: flowofcontrol/docker-kafka
+    depends_on:
+      - zookeeper
+    links:
+      - zookeeper:zookeeper
+```
